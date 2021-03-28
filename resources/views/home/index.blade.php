@@ -21,8 +21,9 @@
         <h1 class="text-lg tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-2xl">
                 <span class="block xl:inline">Give it a try</span>
               </h1>
-            <form action="POST">
-            <label for="first_name" class="block text-sm font-medium text-gray-700">Enter the link you'd like to shorten.</label>
+            <form action="{{ route('shorten') }}" method="post">
+              @csrf
+            <label for="url" class="block text-sm font-medium text-gray-700">Enter the link you'd like to shorten.</label>
                     <input type="text" name="url" id="url" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-lg border-gray-300 rounded-md">
 
                     <button type="submit" class="my-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
