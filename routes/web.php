@@ -15,5 +15,5 @@ use App\Http\Controllers\ShortsController;
 */
 
 Route::get('',[PagesController::class, 'index']);
-Route::post('/shorten',[ShortsController::class, 'index'])->name('shorten');
-Route::get('/{slug}',[ShortsController::class, 'shorten']);
+// Route::post('/shorten',[ShortsController::class, 'index'])->name('shorten');
+// Route::get('/{slug}',[ShortsController::class, 'shorten']);
