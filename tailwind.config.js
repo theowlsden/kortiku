@@ -11,6 +11,7 @@ module.exports = {
             primary: ["Poppins", "sans-serif"],
         },
         backgroundColor: (theme) => ({
+            ...theme("colors"),
             primary: "#F0EFFE ",
             vibrant: "#A49EFB",
         }),
