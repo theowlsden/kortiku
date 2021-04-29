@@ -14,27 +14,30 @@
             <h4 class="font-primary font-semibold text-xl my-2">
                 Try it out
             </h4>
-            <form class="flex flex-col" method="POST" action="">
+            <form class="flex flex-col" method="POST" action="{{ route('shorten') }}">
                 @csrf
-                <label for="shortener" class="block font-primary font-light text-xs my-2">
+                <label for="longUrl" class="block font-primary font-light text-xs my-2">
                     Enter a long URL and experience the magic of kortiku
                 </label>
                 <div class="flex flex-col md:flex-row content-start">
-                    <input name="shortener"
+                    <input required name="longUrl"
                         class="focus:ring-indigo-500 focus:border-indigo-500 block w-full px-4 py-1 my-2 border border-primary rounded-2xl md:w-1/2"
                         type="text" name="" id="">
-                    <input
-                        class="block bg-vibrant content-end rounded-full text-white self-end max-w-max md:mx-8 my-2 px-6 py-2"
-                        type="button" value="shorten">
+                    <button class="block bg-vibrant content-end rounded-full text-white self-end max-w-max md:mx-8 my-2 px-6 py-2" type="submit">
+                        <p>shorten</p>
+                    </button>
+                    
                 </div>
             </form>
 
+            @if (Session::has('user_id'))
             <div id="result" class="w-full md:w-3/4 bg-white rounded-2xl my-8 px-4 py-2">
-                <h2 class="font-primary font-semibold text-2xl">kortiku.co/ <span id="slug">slug </span></h2>
+                <h2 class="font-primary font-semibold text-2xl">kortiku.co/ <span id="slug"> {{ session('message') }} </span></h2>
                 <p class="font-primary font-normal text-sm">will redirect to</p>
                 <h4 class="font-primary font-medium text-base" id="longUrl">
                     https://coolors.co/a49efb-2b2926-8332ac-8d8c7c-f3f7f2</h4>
-            </div>
+            </div>                
+            @endif
         </div>
         <div id="hero-image" class="flex justify-center content-center">
             <img class="w-1/2" src="{{ asset('img/shortener.svg') }}" alt="">
@@ -107,10 +110,10 @@
 
         <div class="md:w-1/2 m-auto">
             <h1 class="text-center font-primary font-bold text-4xl my-2">Ready to share your links with the world?</h1>
-            <p class="text-center font-primary font-normal text-base my-2">Secure your username and start creating your kortiku links</p>
+            <p class="text-center font-primary font-normal text-base my-2">Join the waiting list and secure your username</p>
             <form action="" method="post">
                 @csrf
-                <div class="flex flex-row content-start">
+                <div class="w-full flex flex-row justify-center">
                 <label for="shortener" class="block font-primary font-light text-xl my-2">
                     kortiku.co/
                 </label>

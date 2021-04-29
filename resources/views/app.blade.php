@@ -22,12 +22,13 @@
                     <img class="w-14" src="{{ asset('img/logo.svg') }}" alt="kortiku logo">
                 </a>
             </div>
-            <div id="nav-links" class="hidden content-center md:block">
+            <div id="nav-links" class="hidden content-center md:flex md:items-center">
                 <ul class="flex flex-row">
-                    <li class="px-4"><a href="#">home</a></li>
-                    <li class="px-4"><a href="#features">features</a></li>
-                    <li class="px-4"><a href="#">login</a></li>
-                    <li class="px-4">don't have an account? <a href=""> sign up here</a></li>
+                    <li class="px-4"><a class="font-primary font-normal text-sm" href="#">home</a></li>
+                    <li class="px-4"><a class="font-primary font-normal text-sm" href="#features">features</a></li>
+                    <li class="px-4"><a class="font-primary font-normal text-sm" href="#">login</a></li>
+                    <li class="px-4"><a class="font-primary font-normal text-sm" href="">don't have an account? <span
+                                class="font-primary font-bold text-indigo-400 text-sm">sign up here</span></a></li>
                 </ul>
             </div>
 
@@ -44,9 +45,9 @@
             </div>
         </div>
 
-        <div id="mobileNav" class="hidden absolute transition transform origin-top-right top-0 inset-x-0 p-2 md:hidden ">
-            <div
-                class="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
+        <div id="mobileNav"
+            class="hidden absolute transition-transform duration-500 ease-in-out origin-top-right top-0 inset-x-0 p-2 md:hidden ">
+            <div class="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
                 <div class="p-4 flex items-center justify-between border-b-2 border-gray-100">
                     <div id="logo">
                         <a href="#" class="flex content-center">
@@ -67,10 +68,13 @@
                 <div class="px-2 pt-2 pb-3 space-y-1">
                     <div id="nav-links" class="">
                         <ul class="flex flex-col">
-                            <li class="px-4"><a href="#">home</a></li>
-                            <li class="px-4"><a href="#features">features</a></li>
-                            <li class="px-4"><a href="#">login</a></li>
-                            <li class="px-4">don't have an account? <a href=""> sign up here</a></li>
+                            <li class="px-4"><a class="font-primary font-normal text-sm" href="#">home</a></li>
+                            <li class="px-4"><a class="font-primary font-normal text-sm" href="#features">features</a>
+                            </li>
+                            <li class="px-4"><a class="font-primary font-normal text-sm" href="#">login</a></li>
+                            <li class="px-4"><a class="font-primary font-normal text-sm" href="">don't have an account?
+                                    <span class="font-primary font-bold text-indigo-400 text-sm">sign up here</span></a>
+                            </li>
                         </ul>
                     </div>
                 </div>

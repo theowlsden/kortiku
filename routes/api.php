@@ -16,7 +16,14 @@ use App\Http\Controllers\ShortController;
 */
 
 // Route::get('/shorten',[ShortController::class, 'store'])->name('shorten');
-Route::post('/shorten',[ShortController::class, 'store'])->name('shorten');
+Route::prefix('api')->group(function () {
+    Route::post('/shorten',[ShortController::class, 'store'])->name('shorten');    
+});
+
+
+Route::get('/',[ShortController::class, 'index']);
+Route::get('/{slug}',[ShortController::class, 'show']);
+
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

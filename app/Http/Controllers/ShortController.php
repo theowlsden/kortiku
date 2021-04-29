@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Short;
+use App\Http\Requests\ShortRequest;
 
 class ShortController extends Controller
 {
@@ -15,6 +16,7 @@ class ShortController extends Controller
     public function index()
     {
         //
+        return Short::all();
     }
 
     /**
@@ -23,10 +25,21 @@ class ShortController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ShortRequest $request)
     {
-        //
-        return $request;
+        $longUrl = $request->input("longUrl");
+        
+        $kortikuSlug = Short::where("longUrl", "=", $longUrl)->first();
+        if(Short::where("longUrl", "=", $longUrl)->first()){
+            return $kortikuSlug;
+        }else{
+            $slug = self::makeSlug();
+
+            $created = self::createLink($longUrl, $slug);
+            if($created == 1){
+                return $slug;
+            }
+        }
     }
 
     /**
@@ -35,9 +48,16 @@ class ShortController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(string $slug)
     {
         //
+        $kortikuLink = Short::where('slug', "=", $slug)->first();
+        if($kortikuLink){
+            $longUrl = $kortikuLink->longUrl;
+            return redirect()->away( $longUrl);
+        }else{
+            return "does not exitts";
+        }
     }
 
     /**
@@ -61,5 +81,22 @@ class ShortController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function makeSlug(){
+        $randomBytes = random_bytes(3);
+        $slug = bin2hex($randomBytes);
+        if(Short::where("slug", "=", $slug)->first()){
+            self::makeSlug();
+        }else{
+            return $slug;
+        }
+    }
+
+    function createLink(string $link, string $slug){
+       $kortikuLink = new Short;
+       $kortikuLink->longUrl = $link;
+       $kortikuLink->slug = $slug;
+       return $kortikuLink->save();
     }
 }
